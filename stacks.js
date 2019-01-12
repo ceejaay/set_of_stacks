@@ -1,4 +1,5 @@
 // you set a value to the max value . You push in a value. but before that you do that you check the current value. Then it makes a new array.
+// But you need to create pop the extra value into the new array
 class StackSet {
   constructor(maxSize) {
     if(arguments.length < 1) {
