@@ -42,7 +42,7 @@ class StackSet {
 
     for(let i = number; i< this.stacks.length; i++) {
       nextStack = this.stacks[i];
-      nextStack.revers();
+      nextStack.reverse();
       stack.push(nextStack.pop());
       nextStack.reverse();
       stack = nextStack;
@@ -61,15 +61,17 @@ class StackSet {
 
 
 const stack = new StackSet(3)
+stack.push(1)
 stack.push(2)
-stack.push('f')
+stack.push(3)
 stack.push(4)
-stack.push(4)
-stack.push(4)
-stack.push(4)
-stack.push(4)
-console.log(stack.pop())
+stack.push(5)
+// stack.push(6)
+// stack.push(7)
+// stack.push(8)
+console.log('here are the stacks', stack.stacks)
 
-console.log(stack.stacks)
+console.log('we pop a value in stack 2', stack.popAt(1)) 
+console.log('the result of the stacks', stack.stacks)
 
   
