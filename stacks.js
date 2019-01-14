@@ -17,9 +17,44 @@ class StackSet {
     this.stacks[this.stacks.length -1].push(value)
   }
 
-  value() {
-    return this.stacks[0].length
+  pop() {
+    const value = this.stacks[this.stacks.length - 1].pop()
+    if(this.stacks.length > 1 &&
+        this.stacks[this.stacks.length - 1].length === 0) {
+      this.stacks.pop()
+    }
+    return value
   }
+
+  popAt(number) {
+    if(number < 1 || number > this.stacks.length) {
+      throw new Error ('This number is either too small or too large for our stack')
+    }
+
+    if( number === this.stacks.length ) {
+      return  this.pop()
+    }
+
+    let stack = this.stacks[number - 1]
+    let value = stack.pop()
+    let nextStack = []
+
+
+    for(let i = number; i< this.stacks.length; i++) {
+      nextStack = this.stacks[i];
+      nextStack.revers();
+      stack.push(nextStack.pop());
+      nextStack.reverse();
+      stack = nextStack;
+    }
+
+    if(this.stacks.length > 1 && this.stacks[this.stacks.length - 1].length === 0) {
+      this.stacks.pop()
+    }
+
+    return value;
+}
+
 }
 
 
@@ -33,8 +68,8 @@ stack.push(4)
 stack.push(4)
 stack.push(4)
 stack.push(4)
+console.log(stack.pop())
 
-console.log(stack.value())
-console.log(stack)
+console.log(stack.stacks)
 
   
